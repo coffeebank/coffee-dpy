@@ -1,7 +1,7 @@
 import asyncio
 import json
 import os
-import pkg_resources
+import importlib.metadata
 import subprocess
 import sys
 import traceback
@@ -91,9 +91,9 @@ class DpyUtils():
 
     def is_package_installed(package):
         try:
-            pkg_resources.get_distribution(package)
+            importlib.metadata.version(package)
             return True
-        except pkg_resources.DistributionNotFound:
+        except importlib.metadata.PackageNotFoundError:
             return False
 
 
