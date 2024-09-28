@@ -98,8 +98,11 @@ class DpyUtils():
 
 
 def run_bot() -> None:
-    bot = Bot()
-    asyncio.run(bot.start())
+    try:
+        bot = Bot()
+        asyncio.run(bot.start())
+    except KeyboardInterrupt:
+        return print("KeyboardInterrupt\nBot shutting down...")
 
 if __name__ == "__main__":
     run_bot()
